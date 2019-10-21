@@ -1,0 +1,25 @@
+Test E: 
+1. Malloc up to the cache's absolute capacity (128 28-byte variables, since the metadata is of size 4)
+2. Free every other space in the array 
+    So it would look like this:
+   [FREE TAKEN FREE TAKEN FREE TAKEN FREE TAKEN]
+3. Stick 64 28-byte variables back in memory
+
+
+This tested whether our cache could hold the amount of memory it was supposed to. We then freed half the data, and went on to test whether the array could make it up to capacity again, by inserting the freed items back into it.
+
+
+Test F:
+Put an actual string into memory:
+char* wordPointer = malloc(8);
+	wordPointer[0] = 'A';
+	wordPointer[1] = 'L';
+	wordPointer[2] = 'L';
+	wordPointer[3] = 'I';
+	wordPointer[4] = 'S';
+	wordPointer[5] = 'O';
+	wordPointer[6] = 'N';
+	wordPointer[7] = '\0';
+	free(wordPointer);
+
+This memory is completely useless if the user can't store anything, so we made sure that information could actually be inserted into it. 
